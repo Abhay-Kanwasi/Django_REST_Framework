@@ -207,8 +207,40 @@ class <Serializer>(serializers.Serializer):
         return <Model_Name>.objects.create(**validate_data)
 ```
 
+### Parital Update Data / Complete Update Data
+
+```python
+from rest_framework import serializers
+
+class <SerializerName>(serializers.Serialize):
+    first_attribute = serialize.CharField(max_length=255)
+    second_attribute = serialize.CharField(max_length=255)
+    third_attribute = serialize.CharField(max_length=255)
+
+    def update(self, instance, validated_data): # In this you will see data like this (self, old_data, new_data)
+        instance.first_attribute = validated_data.get('first_attribute', intance.first_attribute)
+        instance.second_attribute = validated_data.get('second_attribute', intance.second_attribute)
+        instance.third_attribute = validated_data.get('third_attribute', intance.third_attribute)
+        instance.save()
+        return instance
+```
+By default, serializers must be passed values for all required fields or they will raise validation errors.
+
+- Complete Update Data
+Required all data from frontend/client
+serializer = StudentSerializer(<instance-name>, data = pythondata)
+if serializer.is_valid():
+    serializer.save()
+
+- Partial Update Data
+serializer = StudentSerializer(<instance-name>, data = pythondata, partial = True)
+if serializer.is_valid():
+    serializer.save()
+
 ---
 
 ## Notes
 
 * `serializer.data`: Using this we can see what is the data inside serializer.
+
+

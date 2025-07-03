@@ -1,6 +1,4 @@
-def main():
-    print("Hello from django-rest-framework!")
+import json
+import requests
 
-
-if __name__ == "__main__":
-    main()
+URL = "http://127.0.0.1:8000/api/studentapi/"
