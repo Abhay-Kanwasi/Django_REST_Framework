@@ -1,10 +1,10 @@
 from django.db import models
 
-class Student(models.Model):
-    name = models.CharField(max_length=255)
-    roll_no = models.IntegerField(unique=True)
-    city = models.CharField(max_length=255)
-    status = models.BooleanField(default=False)
+class Book(models.Model):
+    title = models.CharField(max_length=200)
+    author = models.CharField(max_length=100)
+    published_date = models.DateField()
+    isbn = models.CharField(max_length=13, unique=True)
 
     def __str__(self):
-        return self.name
+        return self.title

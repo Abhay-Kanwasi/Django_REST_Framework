@@ -1,5 +1,11 @@
-from rest_framework.response import Response
+from rest_framework import generics
+from .models import Book
+from .serializers import BookSerializer
 
-from app.models import Student
-from crud_functionality.app.serializers import StudentSerializer
+class BookListCreateAPIView(generics.ListCreateAPIView):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
 
+class BookRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer

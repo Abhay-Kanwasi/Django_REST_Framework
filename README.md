@@ -237,6 +237,27 @@ serializer = StudentSerializer(<instance-name>, data = pythondata, partial = Tru
 if serializer.is_valid():
     serializer.save()
 
+
+### Generics in DRF
+Without generics, you'd have to manually handle:
+
+- Getting the model instance
+- Serializing the data
+- Validating input
+- Sending proper HTTP responses
+- Handling different request methods
+With generics, DRF does that for you.
+
+##### How it works ?
+| Class                          | Methods Supported               | Purpose                          |
+| ------------------------------ | ------------------------------- | -------------------------------- |
+| `ListAPIView`                  | `GET`                           | List all objects                 |
+| `CreateAPIView`                | `POST`                          | Create a new object              |
+| `RetrieveAPIView`              | `GET`                           | Get a single object by ID        |
+| `UpdateAPIView`                | `PUT` / `PATCH`                 | Update an existing object        |
+| `DestroyAPIView`               | `DELETE`                        | Delete an object                 |
+| `ListCreateAPIView`            | `GET`, `POST`                   | Combine list and create          |
+| `RetrieveUpdateDestroyAPIView` | `GET`, `PUT`, `PATCH`, `DELETE` | Combine retrieve, update, delete |
 ---
 
 ## Notes
